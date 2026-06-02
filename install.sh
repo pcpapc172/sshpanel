@@ -55,4 +55,5 @@ systemctl restart sshpanel
 
 echo
 echo "Installation completed."
-echo "Panel: http://$(curl -s ifconfig.me):3000"
+echo "Panel: http://$(curl -4 -s ifconfig.me):3000"
+echo "Panel: http://$(curl -6 -s ifconfig.me):3000"

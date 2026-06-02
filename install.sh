@@ -54,6 +54,11 @@ systemctl enable sshpanel
 systemctl restart sshpanel
 
 echo
+echo
 echo "Installation completed."
-echo "Panel: http://$(curl -4 -s ifconfig.me):3000"
-echo "Panel: http://[$(curl -6 -s ifconfig.me)]:3000"
+
+IPV4=$(curl -4 -fsS --max-time 5 ifconfig.me 2>/dev/null || true)
+IPV6=$(curl -6 -fsS --max-time 5 ifconfig.me 2>/dev/null || true)
+
+[ -n "$IPV4" ] && echo "IPv4: http://$IPV4:3000"
+[ -n "$IPV6" ] && echo "IPv6: http://[$IPV6]:3000"
